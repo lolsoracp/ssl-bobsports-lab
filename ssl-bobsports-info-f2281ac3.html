@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简明指南 · bob体育 信息页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", sans-serif;
+      background: #f2f4f8;
+      color: #1e222b;
+      line-height: 1.7;
+      padding: 0 18px;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    /* ===== 深色头图 ===== */
+    .hero {
+      background: linear-gradient(145deg, #11141f 0%, #1a2030 70%, #222b3e 100%);
+      color: #eef1f5;
+      padding: 56px 32px 48px;
+      border-radius: 32px;
+      margin-bottom: 40px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.20);
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 550;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .hero .sub {
+      font-size: 1.1rem;
+      opacity: 0.78;
+      max-width: 520px;
+      border-left: 4px solid #f49b3e;
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+    .hero .tagline {
+      margin-top: 16px;
+      font-size: 0.96rem;
+      color: #bcc6db;
+    }
+
+    /* ===== 卡片网格 / 目录感 ===== */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 12px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 28px 26px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+      transform: translateY(-2px);
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 550;
+      margin-bottom: 16px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #e2e7f0;
+      color: #0f172a;
+    }
+    .card h2 i {
+      margin-right: 8px;
+      display: inline-block;
+      width: 24px;
+      text-align: center;
+    }
+
+    .card ul, .card p {
+      font-size: 0.98rem;
+      color: #2d3748;
+    }
+    .card ul {
+      list-style: none;
+    }
+    .card li {
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+    }
+    .card li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: #f49b3e;
+      font-weight: bold;
+    }
+
+    /* 提示区 单独卡片 */
+    .notice-card {
+      background: #fefaf2;
+      border-left: 6px solid #f49b3e;
+      padding: 24px 28px;
+      border-radius: 22px;
+      margin: 30px 0 28px;
+    }
+    .notice-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #3a1f00;
+    }
+    .notice-card p {
+      font-size: 0.97rem;
+      color: #3d3a35;
+      max-width: 90%;
+    }
+
+    /* 相关信息区 */
+    .info-section {
+      border-radius: 24px;
+      background: #ffffff;
+      padding: 30px 28px 26px;
+      margin: 28px 0 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+    .info-section h3 {
+      font-size: 1.25rem;
+      font-weight: 540;
+      border-left: 5px solid #f49b3e;
+      padding-left: 18px;
+      margin-bottom: 18px;
+      color: #131a29;
+    }
+    .info-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 28px;
+    }
+    .info-item {
+      flex: 1 1 180px;
+      background: #f6f8fc;
+      border-radius: 18px;
+      padding: 14px 18px;
+    }
+    .info-item strong {
+      display: block;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 5px;
+    }
+    .info-item span {
+      font-size: 0.92rem;
+      color: #4a5568;
+    }
+
+    /* 强调色链接 */
+    a {
+      color: #c46d1b;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+      font-weight: 500;
+    }
+    a:hover {
+      color: #a35812;
+      border-bottom-color: #c68641;
+    }
+
+    /* FAQ 精简 */
+    .faq-mini {
+      margin-top: 32px;
+      padding: 18px 0 6px;
+    }
+    .faq-mini details {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 12px 20px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      border: 1px solid #e8ecf2;
+    }
+    .faq-mini summary {
+      font-weight: 530;
+      cursor: pointer;
+      color: #1f2a3c;
+      padding: 4px 0;
+    }
+    .faq-mini summary::marker {
+      color: #f49b3e;
+    }
+    .faq-mini p {
+      margin: 10px 0 4px;
+      font-size: 0.95rem;
+      color: #364150;
+    }
+
+    /* 响应式 */
+    @media (max-width: 760px) {
+      .grid-2col {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .hero {
+        padding: 36px 22px;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .card {
+        padding: 22px;
+      }
+      .notice-card p {
+        max-width: 100%;
+      }
+      .info-flex {
+        flex-direction: column;
+      }
+    }
+
+    hr {
+      margin: 16px 0 12px;
+      border: none;
+      border-top: 1px solid #dce1e9;
+    }
+
+    .footer-note {
+      font-size: 0.88rem;
+      text-align: center;
+      color: #7a8396;
+      margin-top: 36px;
+      padding: 10px 0 20px;
+      border-top: 1px solid #dde2ea;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 深色头图 -->
+  <header class="hero">
+    <h1>bob体育 · 信息速览</h1>
+    <div class="sub">一份简明指南 ｜ 访问方向与实用提醒</div>
+    <div class="tagline">日常浏览之前，不妨先了解结构、场景与注意事项。</div>
+  </header>
+
+  <!-- 目录感双栏 -->
+  <div class="grid-2col">
+    <!-- 介绍区 / 说明 -->
+    <section class="card">
+      <h2><span style="opacity:0.7;">📘</span> 说明</h2>
+      <p><a href="https://ssl-bobsports.com">bob体育</a> 是一个围绕体育资讯、赛程与基础数据的内容平台。并非官方机构或博彩类站点，而是聚合常见体育项目（足球、篮球、网球等）的参考信息。本页围绕平台使用体验，整理了几个可以直接上手的方向。</p>
+      <p style="margin-top:14px;">页面不涉及任何投注引导，也不代表任何体育组织。内容基于公开资料与一般浏览经验编写。</p>
+    </section>
+
+    <!-- 特点 / 场景 -->
+    <section class="card">
+      <h2><span style="opacity:0.7;">⚙️</span> 常见场景</h2>
+      <ul>
+        <li>查询近期主流联赛赛程与大致时间</li>
+        <li>浏览球队、队员基础统计信息</li>
+        <li>了解赛事规则或历史对阵记录</li>
+        <li>获取非实时的体育快讯与分析摘要</li>
+      </ul>
+      <div style="margin-top:16px; background:#f3f6fd; border-radius:14px; padding:12px 16px; font-size:0.93rem; color:#384252;">
+        <strong>小提示：</strong> 数据来源于多个公开渠道，请以官方实时信息为准。
+      </div>
+    </section>
+  </div>
+
+  <!-- 提示区  -->
+  <div class="notice-card">
+    <h3>🔔 访问提醒</h3>
+    <p>建议在稳定的网络环境下使用；部分区域可能因当地政策限制无法顺利加载。如果页面打开较慢，可以尝试刷新或稍后再试。浏览时留意浏览器地址栏是否有安全标识，保护个人设备与隐私信息。<br>
+    另外，如果遇到要求输入敏感信息的弹窗，请保持警惕，正规体育信息页面通常不会索要密码或支付账户。</p>
+  </div>
+
+  <!-- 相关信息区 -->
+  <div class="info-section">
+    <h3>📎 相关信息</h3>
+    <div class="info-flex">
+      <div class="info-item">
+        <strong>内容范围</strong>
+        <span>足球 / 篮球 / 网球 / 电竞等主流项目资讯</span>
+      </div>
+      <div class="info-item">
+        <strong>更新节奏</strong>
+        <span>非实时，通常每日或每轮赛事后刷新</span>
+      </div>
+      <div class="info-item">
+        <strong>兼容建议</strong>
+        <span>Chrome / Edge / Firefox 最新版体验更佳</span>
+      </div>
+      <div class="info-item">
+        <strong>语言</strong>
+        <span>简体中文为主，部分栏目含英文术语</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <details>
+      <summary>bob体育 和常见体育平台有什么不同？</summary>
+      <p>更偏向信息聚合与赛程浏览，不提供实时直播或深度数据工具。界面相对简洁，适合快速查看基础内容。</p>
+    </details>
+    <details>
+      <summary>页面打不开或显示不全怎么办？</summary>
+      <p>可以尝试更换浏览器、关闭广告拦截插件或切换网络环境。如果仍然异常，可能是临时服务器波动，过段时间再试试。</p>
+    </details>
+    <details>
+      <summary>这个站点包含用户注册吗？</summary>
+      <p>部分功能可能需要简单注册（如收藏或评论），但您可以不注册直接浏览大部分公开信息。注册时请使用基本邮箱，不要关联重要密码。</p>
+    </details>
+  </div>
+
+  <hr>
+  <div class="footer-note">
+    本页面为独立介绍页，与 bob体育 平台无直接关联。内容仅供一般参考，不构成任何形式的建议或承诺。
+  </div>
+
+</div>
+</body>
+</html>
